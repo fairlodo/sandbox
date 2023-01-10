@@ -1,3 +1,4 @@
+"use strict"
 let nikon50mm14ais = {
     name: 'Nikon 50mm f/1.4 AI-S',
     photoUrl: 'https://www.kenrockwell.com/nikon/images1/50mm-f14-s/D3S_8318-0600.jpg',
@@ -8,6 +9,9 @@ let nikon50mm14ais = {
     },
     vendor: 'Nikon',
     manufactureDate: 1972,
+    sayClick() {
+        console.log(`I am ${this.name} and i CLICK!`);
+        },
 }
 
 let tamron50mm14m = _.cloneDeep(nikon50mm14ais);
@@ -19,10 +23,16 @@ tamron50mm14m.manufactureDate = 2016;
 
 printLensParams(nikon50mm14ais);
 printLensParams(tamron50mm14m);
+tamron50mm14m.sayClick();
+console.log(this);
 
 /// functions live here
 function printLensParams(lens) {
     for (let key in lens) {
+        if(typeof lens[key] === 'function') {
+            continue;
+        }
+
         if (typeof lens[key] === 'object') {
             for (let subKey in lens[key]) {
                 console.log(`${key} ${subKey} : ${lens[key][subKey]}`);

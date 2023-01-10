@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The stuff is totally random</title>
+    <style>
+        th {
+            padding: 10px;
+            width: 70px;
+            text-align: center;
+        }
+        td {
+            padding: 10px;
+            width: 70px;
+            text-align: center;
+            border: 1px solid black;
+            border
+        }
+        table {
+            width: 400px;
+        }
+    </style>
+    <script>
+        "use strict"
+
+        function createMultiTable() {
+            const myTable = document.createElement('table');
+            const myTbody = document.createElement('tbody');
+
+            for (let i = 1; i <= 9; i++) {
+
+                const myRow = document.createElement('tr');
+
+                for (let j = 1; j <= 9; j++) {
+                    if (i == 1 || j == 1) {
+                        const myCellHead = document.createElement('th');
+                        const myCellContent = document.createTextNode(`${i * j}`);
+                        myCellHead.appendChild(myCellContent);
+                        myRow.appendChild(myCellHead);
+                        continue;
+                    }
+
+                    const myCell = document.createElement('td');
+                    const myCellContent = document.createTextNode(`${i * j}`);
+                    myCell.appendChild(myCellContent);
+                    myRow.appendChild(myCell);
+                }
+
+                myTbody.appendChild(myRow);
+            }
+
+            myTable.appendChild(myTbody);
+            document.body.appendChild(myTable);
+
+            myTable.setAttribute('padding', '10px');
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <script>
+        createMultiTable();
+    </script>
+</body>
+</html>
