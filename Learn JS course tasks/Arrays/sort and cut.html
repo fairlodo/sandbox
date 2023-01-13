@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I need to write a function which takes an array, a and b.
+  // It should remove all values except for those between a and b.
+  // It should modify the array, not return new.
+
+  // My approach:
+  // I know of three in-place methods for arrays: sort, reverse and splice.
+  // I will need to use splice to cut unused
+
+  function sortAndCut(arr, x, y) {
+      arr.sort((a, b) => a - b).splice(arr.indexOf(y));
+      arr.splice(0, arr.indexOf(x));
+      return arr;
+  }
+
+  function sortAndCut2(arr, x, y) {
+      for (let i = 0; i < arr.length; i++) {
+          let pos = arr[i]
+
+          if(pos < x || pos > y) {
+              arr.splice(i, 1);
+              i--;
+          }
+      }
+
+      return arr;
+  }
+
+  let myArr = [12, 4, 2, 8, 57, 6, 3, 1, 8, 5]
+
+  console.log(sortAndCut2(myArr, 4, 12));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I need to create a function which will take an array and return an array containing only unique values
+
+  let verse = ['hare', 'krishna', 'hare', 'krishna', 'krishna', 'hare', 'krishna', 'hare', 'lol'];
+
+  // function unique(arr) {
+  //   arr.sort();
+  //
+  //     for (let i = 0; i < arr.length; ) {
+  //         if (arr[i] === arr[i + 1]) {
+  //             arr.splice(i, 1);
+  //             continue;
+  //         }
+  //         i++;
+  //     }
+  //
+  //     return arr;
+  // }
+
+  function unique(arr) {
+      let result = [];
+
+      for (let i = 0; i < arr.length; i++) {
+          if (result.includes(arr[i])) {
+              continue;
+          }
+
+          result.push(arr[i]);
+      }
+      return result;
+  }
+
+  console.log(unique(verse));
+
+</script>
+</body>
+</html>

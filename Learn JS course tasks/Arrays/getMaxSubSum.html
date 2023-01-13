@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nothing to see here</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    function getMaxSubSum(arr) {
+    //    let arr = [-1, 2, 3, -9];
+        let spanSize = 1;
+        let prevCountResults = 0;
+
+        do {
+            for (let i = 0; i <= arr.length - spanSize; i++) {
+                let newCountResults = 0;
+
+                for (let j = i; j < spanSize + i; j++) {
+                //    console.log(arr[j]);
+                    newCountResults += arr[j];
+                }
+            //    console.log(`Previous count results: ` + prevCountResults);
+                if (newCountResults > prevCountResults) prevCountResults = newCountResults;
+            //    console.log(`New count results: ` + newCountResults);
+            }
+            spanSize ++;
+        } while (spanSize <= arr.length);
+
+        return prevCountResults > 0 ? prevCountResults : 0;
+    }
+
+    console.log(getMaxSubSum([-1, 2, 3, -9]));
+    console.log(getMaxSubSum([2, -1, 2, 3, -9]));
+    console.log(getMaxSubSum([-1, 2, 3, -9, 11]));
+    console.log(getMaxSubSum([-2, -1, 1, 2]));
+    console.log(getMaxSubSum([100, -9, 2, -3, 5]));
+    console.log(getMaxSubSum([1, 2, 3]));
+
+
+  </script>
+</body>
+</html>

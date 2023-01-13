@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I receive an array with objects.
+  // The task is th make an object with IDs as keya and those array element as values.
+
+  // let result = {};
+  // for (let key of arr) {
+  //     result[key.id] = key;
+  // }
+
+  let users = [
+      {id: 'john', name: "John Smith", age: 20},
+      {id: 'ann', name: "Ann Smith", age: 24},
+      {id: 'pete', name: "Pete Peterson", age: 31},
+  ];
+
+  function groupById(arr) {
+      return arr.reduce(
+          (obj, person) => {
+              obj[person.id] = person;
+              return obj;
+          }, {}
+      );
+  }
+
+  function sumAges(arr) {
+      return arr.reduce(
+          (sum, person) => {
+              sum += person.age;
+              return sum;
+          }, 0
+      );
+  }
+
+  console.log(groupById(users));
+  console.log(sumAges(users));
+
+</script>
+</body>
+</html>

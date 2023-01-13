@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I need to create a function that takes an array of objects with names and ages and returns average age
+
+  let serge = { name: 'Serge', age: 32 };
+  let george = { name: 'George', age: 24 };
+  let eldar = { name: 'Eldar', age: 43 };
+
+  let users = [ serge, george, eldar ];
+
+  function getAverageAge(arr) {
+      return arr.reduce(
+          (sum, current) => sum + current.age, 0
+      ) / users.length;
+  }
+
+  console.log(getAverageAge(users));
+
+</script>
+</body>
+</html>

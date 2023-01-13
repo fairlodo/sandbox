@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I need to write a function which takes an array, a and b.
+  // The function looks for values >= a and <= b and returns them in a new array.
+
+  // 1. Create a result array
+  // 2. Use array.map to populate it with required numbers
+  // 3. I return the resulting array
+
+  function filterRange(arr, a, b) {
+      return arr.filter(item => (item >= a && item <= b));
+  }
+
+  let myConscripts = [12, 14, 16, 19, 24, 25, 32, 46, 18];
+  console.log(filterRange(myConscripts, 18, 27));
+
+</script>
+
+</body>
+</html>

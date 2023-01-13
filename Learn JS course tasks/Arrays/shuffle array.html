@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // I need to create a function which shuffles an array
+
+  // let arr = [1, 2, 3, 4, 5];
+  //
+  // console.log(arr);
+  //
+  // function shuffle(arr) {
+  //     arr.sort((a, b) => {
+  //             return (Math.random() - Math.random());
+  //     })
+  // }
+  //
+  // shuffle(arr);
+  // console.log(arr);
+  //
+  // let count = {
+  //     '123': 0,
+  //     '132': 0,
+  //     '213': 0,
+  //     '231': 0,
+  //     '321': 0,
+  //     '312': 0
+  // };
+  //
+  // for (let i = 0; i < 1000000; i++) {
+  //     let array = [1, 2, 3];
+  //     shuffle(array);
+  //     count[array.join('')]++;
+  // }
+  //
+  // // показать количество всех возможных вариантов
+  // for (let key in count) {
+  //     console.log(`${key}: ${count[key]}`);
+  // }
+
+  function shuffleFisher(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+
+          // i == 4, j == 3
+          let j = Math.floor(Math.random() * (i + 1));
+
+          // t == 4
+          let t = arr[i];
+          // arr[4] = arr[3]
+          arr[i] = arr[j];
+          // arr[3] = arr[4]
+          arr[j] = t;
+      }
+
+      return arr;
+  }
+
+  let arr1 = [1, 2, 3];
+
+  shuffleFisher(arr1);
+  console.log(arr1);
+
+  let count = {
+      '123': 0,
+      '132': 0,
+      '213': 0,
+      '231': 0,
+      '321': 0,
+      '312': 0
+  };
+
+
+  for (let i = 0; i < 1000000; i++) {
+      let array = [1, 2, 3];
+      shuffleFisher(array);
+      count[array.join('')]++;
+  }
+
+  // показать количество всех возможных вариантов
+  for (let key in count) {
+      console.log(`${key}: ${count[key]}`);
+  }
+
+
+</script>
+</body>
+</html>

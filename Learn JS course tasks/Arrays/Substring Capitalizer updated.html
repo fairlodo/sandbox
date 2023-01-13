@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+
+  // The function translates the string like 'my-short-string' to MyShortString
+
+  // 1. Break the string into separate words using - as a delimiter
+  // 2. Capitalize each word
+  // 3. Concatenate in a single word
+  // 4. Return result
+
+  // NB: There is a better solution of which I didn't know:
+  // it operates functions with a dot in a same query. First dotted function
+  // is a string function, and then it continues with an array functions.
+  // The sequence is split - map
+
+  function camelize(str) {
+      return str
+          .split('-')
+          .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+          .join('');
+  }
+
+  // Okay it seems I got it now. Complicated as fuck, but in the end it appears simple,
+  // I just need to be proficient with more methods
+  console.log(camelize('-div-width-horizontal'));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // Create a calculator which takes string like '3 + 5', '11 - 8', parses the string and returns result.
+  // Step 2 is to create function that will teach calculator new operations / signs
+
+  function Calculator() {
+      this.methods = {
+          '+': (a, b) => +a + +b,
+          '-': (a, b) => a - b,
+      }
+
+      this.calculate = function(input) {
+          let operator;
+          let tmp = input.split(' ');
+          operator = tmp[1];
+          return this.methods[operator](tmp[0], tmp[2]);
+      }
+
+      this.addMethod = function(op, func) {
+          this.methods[op] = func;
+      }
+  }
+
+  let calc = new Calculator();
+  console.log(calc.calculate('2 - 4'));
+  console.log(calc.methods);
+  calc.addMethod('*', (a, b) => a * b);
+  console.log(calc.methods);
+  console.log(calc.calculate('2 * 6'));
+
+
+
+</script>
+
+</body>
+</html>
