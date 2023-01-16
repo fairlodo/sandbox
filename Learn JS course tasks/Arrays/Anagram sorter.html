@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+    'use strict'
+    // I need to create function that will detect anagrams and filter them out of an array
+
+    let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+    function aClean(arr) {
+        let letterSet = new Map();
+
+        for (let word of arr) {
+            // Here I make every string lowercase, break it into characters, sort them,
+            // then loin again to get a set of symbols
+            let sorted = word
+                .toLowerCase()
+                .split('')
+                .sort()
+                .join('');
+
+            // Setting the word with a sorted anagram as a key so it will not double
+            letterSet.set(sorted, word);
+            }
+
+        return Array.from(letterSet.values());
+    }
+
+
+
+    console.log( aClean(arr) ); // "nap,teachers,ear" или "PAN,cheaters,era"
+
+</script>
+</body>
+</html>
