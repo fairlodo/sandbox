@@ -7,25 +7,21 @@
 <body>
   <script>
     'use strict'
-    function work(a, b) {
-        return a + b;
+    function f(x) {
+        console.log(x);
     }
 
-    function spy(func) {
-
-        return function wrapper(...args) {
-            wrapper.base.push(args);
-            return func.apply(this, args);
+    function delay(func, time) {
+        return  function () {
+            setTimeout(() => func.apply(this, arguments), time);
         }
-
-        wrapper.base = [];
     }
 
-    work = spy(work);
-
-    console.log(work(3, 5));
-    console.log(work(8, 12));
-    console.log(work.base);
+    f(3);
+    let f1 = delay(f, 1000);
+    let f2 = delay(f, 2000);
+    f1(10);
+    f2(20);
 
   </script>
 </body>
