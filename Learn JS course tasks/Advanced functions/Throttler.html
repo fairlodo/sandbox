@@ -11,29 +11,28 @@
         console.log('Hi there, ' + x);
     }
 
-    function throttle(func, ms) {
-        let isThrottled = false,
+    function throttle(f, ms) {
+        let isCooldown = false,
             savedThis,
             savedArgs;
 
         function wrapper(...args) {
-            if (isThrottled) {
+            if (isCooldown) {
                 savedThis = this;
-                savedArgs = arguments;
+                savedArgs = args;
                 return;
             }
 
-            func.apply(this, arguments);
-            isThrottled = true;
+            f.apply(this, args);
+            isCooldown = true;
 
-            setTimeout(function() {
-                isThrottled = false;
-                if (savedArgs) {
-                    isThrottled = false;
-                    wrapper.apply(savedThis, savedArgs);
-                    savedThis = null;
-                    savedArgs = null;
-                }
+            setTimeout(() => {
+               if (savedArgs) {
+                   isCooldown = false;
+                   wrapper.apply(savedThis, savedArgs);
+                   savedThis = savedArgs = null;
+                   return;
+               }
             }, ms);
         }
 

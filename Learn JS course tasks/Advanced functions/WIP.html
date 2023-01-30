@@ -6,23 +6,26 @@
 </head>
 <body>
   <script>
-    'use strict'
-    function f(x) {
-        console.log(x);
-    }
+	'use strict'
+	let dictionary = Object.create(null);		
 
-    function delay(func, time) {
-        return  function () {
-            setTimeout(() => func.apply(this, arguments), time);
-        }
-    }
+	dictionary.toString = function() {
+		return Object.keys(this).join();
+	};
 
-    f(3);
-    let f1 = delay(f, 1000);
-    let f2 = delay(f, 2000);
-    f1(10);
-    f2(20);
+	Object.defineProperty(dictionary, 'toString', {
+		enumerable: false,
+	});
 
-  </script>
+	dictionary.apple = 'Apple';
+	dictionary.__proto__ = 'test';
+
+	for (let key in dictionary) {
+		console.log(key);
+	}
+
+	alert(dictionary);
+
+	</script>
 </body>
 </html>
