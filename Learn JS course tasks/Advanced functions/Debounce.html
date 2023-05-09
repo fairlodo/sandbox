@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    function hi() {
+        console.log('Hi there!');
+    }
+    function debounce(f, ms) {
+        function wrapper() {
+            let currentTime = Date.now();
+
+            if (currentTime - wrapper.checkTime < ms) {
+                console.log('Too many queries!');
+            }
+            // All other options, run the function
+            else {
+                wrapper.checkTime = Date.now();
+                f();
+            }
+        }
+
+        // I set initial check time to year 3000 so first time the function always works
+        wrapper.checkTime = new Date(3000);
+
+        // Return here, not in function declaration because otherwise the checkTime and firstTime won't activate
+        return wrapper;
+    }
+
+    hi = debounce(hi, 1000);
+
+    hi();
+    hi();
+    setTimeout(() => hi(), 100);
+    setTimeout(() => hi(), 1100);
+    setTimeout(() => hi(), 1500);
+
+  </script>
+</body>
+</html>

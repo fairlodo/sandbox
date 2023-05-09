@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    function work(a, b) {
+        return a + b;
+    }
+
+    function spy(func) {
+
+        return function wrapper(...args) {
+            wrapper.base.push(args);
+            return func.apply(this, args);
+        }
+
+        wrapper.base = [];
+    }
+
+    work = spy(work);
+
+    console.log(work(3, 5));
+    console.log(work(8, 12));
+    console.log(work.base);
+
+  </script>
+</body>
+</html>

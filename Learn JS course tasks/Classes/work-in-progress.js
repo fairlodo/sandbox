@@ -1,4 +1,5 @@
 'use strict'
+<<<<<<< HEAD
 let eventMixin = {
   on(eventName, handler) {
     if (!this._eventHandlers) this._eventHandlers = {};
@@ -41,3 +42,21 @@ let menu = new Menu();
 menu.on('select', value => console.log(`Selected value: ${value}`));
 
 menu.choose('123');
+=======
+class FormatError extends SyntaxError {
+  constructor(desc) {
+    super(desc);
+    this.name = this.constructor.name;
+  }
+}
+
+let err = new FormatError('Oshibka formatirovaniya');
+
+console.log(err.message);
+console.log(err.name);
+console.log(err.stack);
+
+console.log(err instanceof FormatError);
+console.log(err instanceof SyntaxError);
+
+>>>>>>> 715cf917bad5178b5ff7ed11fef1dd741581e9af

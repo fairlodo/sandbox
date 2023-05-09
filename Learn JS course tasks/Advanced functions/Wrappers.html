@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    let worker = {
+        slow(x, y) {
+            console.log(`Executing the slow function with ${x}, ${y} as arguments.`);
+            return x + y;
+        }
+    }
+
+    function wrapper(func) {
+        let cache = new Map();
+
+        return function () {
+            let myHash = hash(arguments);
+
+            if (cache.has(myHash)) {
+                return cache.get(myHash);
+            }
+
+            let result = func.apply(this, arguments);
+            cache.set(myHash, result);
+            return result;
+        }
+    }
+
+    function hash(args) {
+        return [].join.call(args);
+    }
+
+
+    worker.slow = wrapper(worker.slow);
+
+    console.log(worker.slow(2, 3));
+    console.log(worker.slow(2, 3));
+    console.log(worker.slow(3, 5));
+    console.log(worker.slow(3, 5));
+    console.log(worker.slow(2, 3));
+
+
+  </script>
+</body>
+</html>

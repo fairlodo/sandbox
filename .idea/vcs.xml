@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+=======
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Learn JS course tasks/Advanced functions" vcs="Git" />
+>>>>>>> 715cf917bad5178b5ff7ed11fef1dd741581e9af
   </component>
 </project>

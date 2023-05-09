@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    function hi(x) {
+        console.log('Hi there, ' + x);
+    }
+
+    function throttle(func, ms) {
+        let isThrottled = false,
+            savedThis,
+            savedArgs;
+
+        function wrapper(...args) {
+            if (isThrottled) {
+                savedThis = this;
+                savedArgs = arguments;
+                return;
+            }
+
+            func.apply(this, arguments);
+            isThrottled = true;
+
+            setTimeout(function() {
+                isThrottled = false;
+                if (savedArgs) {
+                    isThrottled = false;
+                    wrapper.apply(savedThis, savedArgs);
+                    savedThis = null;
+                    savedArgs = null;
+                }
+            }, ms);
+        }
+
+        return wrapper;
+    }
+
+    hi = throttle(hi, 1000);
+
+    hi(1);
+    hi(2);
+    hi(3);
+
+
+  </script>
+</body>
+</html>
