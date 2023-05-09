@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+	</HEAD>
+	<BODY>
+		<SCRIPT>
+		'use strict'
+		class CoffeeMachine {
+			#waterAmount = 0;
+			#waterLimit = 700;
+
+			constructor(power) {
+				this._power = power;
+				console.log(`Coffee machine with a power of ${this.power}W  created successfully.`);
+			}
+
+			#checkWater(value) {
+				if(value < 0) throw new Error('Water amount negative');
+				if(value > this.waterLimit) throw new Error('Too much water!');
+			}
+
+			set waterAmount(value) {
+				if (value < 0) throw new Error('Water amount can\'t be negative');
+				this.#waterAmount = value;
+			}
+
+			get waterAmount() {
+				return this.#waterAmount;
+			}
+
+			get power() {
+				return this._power;
+			}
+		}
+		
+		let coffeeMachine = new CoffeeMachine(500);
+		coffeeMachine.waterAmount = 100;
+		console.log(coffeeMachine.waterAmount);
+
+		class MegaCoffeeMachine extends CoffeeMachine {
+			method() {
+				console.log( this.#waterAmount );
+			}
+		}
+
+		</SCRIPT>
+	</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIP</title>
+</head>
+<body>
+<script>
+  'use strict'
+
+  // the function translates the string like 'my-short-string' to MyShortString
+
+  // 1. Break the string into separate words using - as a delimiter
+  // 2. Capitalize each word
+  // 3. Concatenate in a single word
+  // 4. Return result
+
+  function camelize(str) {
+      // Initializing result with '' so the first value is not undefined
+      let result = '';
+      // Breaking the strings into parts, omitting '-'
+      let splitString = str.split('-');
+
+      // For each word in array
+      for(let word of splitString) {
+          // Result receives capitalized first letter, then the rest
+          // (substring starting from symbol 1)
+          result += word.charAt(0).toUpperCase();
+          result += word.substring(1);
+      }
+
+      return result;
+  }
+
+  console.log(camelize('---div-width-horizontal'));
+
+</script>
+
+</body>
+</html>
